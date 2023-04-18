@@ -5,6 +5,7 @@ const COMUNI_R = 5,
   MAX_R = 60,
   MIN_R = COMUNI_R - 1,
   MAX_FILTERS = 2;
+let MAX_PROPERTY_VALUE, MIN_PROPERTY_VALUE;
 
 const palette1 = [
   "f94144",
@@ -41,6 +42,7 @@ const palette3 = [
   "ffffff",
 ];
 const colors = [...palette1, ...palette2, ...palette3];
+
 let activeFilters = [];
 
 const addCoordinates = (data) => {
@@ -60,10 +62,11 @@ const addCoordinates = (data) => {
 const getProperties = (data, obj = false) => {
   let acc = {};
   data.forEach((item) => {
-    Object.entries(item.properties).forEach(([key, value]) => {
-      acc[key] = {
-        max: acc[key]?.max > value ? acc[key].max : value,
-        min: acc[key]?.min < value ? acc[key].min : value,
+    Object.entries(item.properties).forEach(([k, v]) => {
+      const value = Number(v);
+      acc[k] = {
+        max: acc[k]?.max > value ? acc[k].max : value,
+        min: acc[k]?.min < value ? acc[k].min : value,
       };
     });
   });
@@ -77,6 +80,12 @@ const getProperties = (data, obj = false) => {
     {}
   );
 
+  const createPropertyLabel = (property) => {
+    //return property.replace(/OR|AND/g, "-")
+    //return property?.replaceAll("OR", "o").replaceAll("AND", "e");
+    return property.replace(/ OR| AND/g, "");
+  };
+
   return obj
     ? Object.entries(acc).reduce(
         (prev, [key, value], index) => ({
@@ -87,6 +96,7 @@ const getProperties = (data, obj = false) => {
             className: key.replaceAll(" ", "-"),
             max: value.max,
             min: value.min,
+            label: createPropertyLabel(key),
           },
         }),
         {}
@@ -100,6 +110,7 @@ const getProperties = (data, obj = false) => {
             className: key.replaceAll(" ", "-"),
             max: value.max,
             min: value.min,
+            label: createPropertyLabel(key),
           },
         ],
         []
@@ -107,16 +118,16 @@ const getProperties = (data, obj = false) => {
 };
 
 const getRadius = (value, key) => {
-  if (properties[key]) {
-    return value ? Math.max((value * MAX_R) / properties[key].max, MIN_R) : 0;
+  if (properties[key] && value) {
+    return Math.max((value * MAX_R) / properties[key].max, MIN_R);
   } else {
-    return value;
+    return 0;
   }
 };
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-const projection = d3.geoMercator().center([11.6, 43.4]).scale(9000); //.center([13.5674, 42.8719]).scale(2200);
+const projection = d3.geoMercator().center([12.6, 42.4]).scale(14000); //.center([13.5674, 42.8719]).scale(2200);
 const path = d3.geoPath(projection);
 const filters = d3.select("#filters");
 let markers = [];
@@ -157,17 +168,29 @@ d3.json("data/italy_regions_rewind.geojson").then(function (regions) {
   // });
 });
 
-// Load the data for the bubbles and display them
-d3.json("data/data2.json").then(function (data) {
-  properties = getProperties(data, true);
-  markers = data.flatMap((c) => {
+d3.json("data/data.json").then(function (data) {
+  const formattedData = data
+    .filter((c) => c.comune !== "Grand Total")
+    .map((c) => {
+      const { comune: name, lat, lon, ...comuneProperties } = c;
+      delete comuneProperties["Grand Total"];
+      return {
+        name,
+        lat,
+        lon,
+        properties: comuneProperties,
+      };
+    });
+
+  properties = getProperties(formattedData, true);
+  markers = formattedData.flatMap((c) => {
     const { properties: comuneProperties, ...comune } = c;
     //update comuni list
     comuni.push(c);
     return Object.entries(comuneProperties).map(([key, value]) => ({
       ...comune,
       property: key,
-      value,
+      value: Number(value),
     }));
   });
 
@@ -181,7 +204,7 @@ d3.json("data/data2.json").then(function (data) {
     .attr("cx", (m) => projection([m.lon, m.lat])[0])
     .attr("cy", (m) => projection([m.lon, m.lat])[1])
     .attr("class", "marker")
-    .style("fill", (m) => properties[m.property].color)
+    .style("fill", (m) => properties[m.property]?.color)
     .style("opacity", 0);
 
   //FILTERS
@@ -189,13 +212,13 @@ d3.json("data/data2.json").then(function (data) {
     .append("div")
     .attr("class", "filters-wrapper")
     .selectAll("div")
-    .data(getProperties(data))
+    .data(getProperties(formattedData))
     .enter()
     .append("div")
     .attr("class", "item-filter")
     .html(
       (p) =>
-        `<span class='pin-color' style="background-color: ${p.color}"></span><span class="filter-name">${p.property}</span>`
+        `<span class='pin-color' style="background-color: ${p.color}"></span><span class="filter-name">${p.label}</span>`
     )
     .on("click", function (f) {
       const element = d3.select(this);
@@ -236,7 +259,7 @@ d3.json("data/data2.json").then(function (data) {
             `<strong>${c.name}</strong>${Object.entries(activeFilters)
               .map(
                 ([k, v]) =>
-                  `<li><span style="color:${v.color}">${k}</span>: ${c.properties[k]}</li>`
+                  `<li><span style="color:${v.color}">${v.label}</span>: ${c.properties[k]}</li>`
               )
               .join("")}`
           )
@@ -252,7 +275,6 @@ d3.json("data/data2.json").then(function (data) {
         );
       })
       .on("mouseleave", function (e, el) {
-        console.log(e, el);
         tooltip
           .transition()
           .duration(500)
@@ -268,7 +290,11 @@ function renderBubbles() {
     .transition()
     .duration(1000)
     .style("opacity", 0.5)
-    .attr("r", (m) => getRadius(m.value, m.property));
+    .attr("r", (m) => {
+      const r = getRadius(m.value, m.property);
+      console.log(properties);
+      return r;
+    });
   const hidden = markersLayer
     .filter((m) => !activeFilters[m.property])
     .transition()
