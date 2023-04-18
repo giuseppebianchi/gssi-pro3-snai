@@ -254,6 +254,7 @@ d3.json("data/data.json").then(function (data) {
       .style("fill", "#000")
       .style("opacity", 0.3)
       .on("mouseover", function (c) {
+        d3.select(this).style("opacity", 1);
         tooltip
           .html(
             `<strong>${c.name}</strong>${Object.entries(activeFilters)
@@ -267,6 +268,8 @@ d3.json("data/data.json").then(function (data) {
           .duration(500)
           .style("opacity", 1)
           .style("visibility", "visible");
+        // render bubbles only for hovered element
+        renderBubbles(c);
       })
       .on("mousemove", function (event) {
         tooltip.style(
@@ -275,28 +278,33 @@ d3.json("data/data.json").then(function (data) {
         );
       })
       .on("mouseleave", function (e, el) {
+        d3.select(this).style("opacity", 0.3);
         tooltip
           .transition()
           .duration(500)
           .style("opacity", 0)
           .style("visibility", "hidden");
+        // reset render bubbles
+        renderBubbles();
       });
   }, 100);
 });
 
-function renderBubbles() {
+function renderBubbles(hovered) {
   const actives = markersLayer
-    .filter((m) => activeFilters[m.property])
+    .filter((m) =>
+      hovered
+        ? m.name === hovered.name && activeFilters[m.property]
+        : activeFilters[m.property]
+    )
     .transition()
     .duration(1000)
     .style("opacity", 0.5)
-    .attr("r", (m) => {
-      const r = getRadius(m.value, m.property);
-      console.log(properties);
-      return r;
-    });
+    .attr("r", (m) => getRadius(m.value, m.property));
   const hidden = markersLayer
-    .filter((m) => !activeFilters[m.property])
+    .filter((m) =>
+      hovered ? m.name !== hovered.name : !activeFilters[m.property]
+    )
     .transition()
     .duration(1000)
     .style("opacity", 0)
