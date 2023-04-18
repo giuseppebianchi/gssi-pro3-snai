@@ -170,7 +170,7 @@ d3.json("data/italy_regions_rewind.geojson").then(function (regions) {
 
 d3.json("data/data.json").then(function (data) {
   const formattedData = data
-    .filter((c) => c.comune !== "Grand Total")
+    .filter((c) => c.comune !== "Grand Total" && c.lat && c.lon)
     .map((c) => {
       const { comune: name, lat, lon, ...comuneProperties } = c;
       delete comuneProperties["Grand Total"];

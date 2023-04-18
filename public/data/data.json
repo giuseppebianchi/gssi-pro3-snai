@@ -420,8 +420,8 @@
     "Grand Total": "10"
   },
   {
-    "lat": "44.066667",
-    "lon": "10.433333",
+    "lat": "",
+    "lon": "",
     "comune": "Comune di Gallicano",
     "acqua AND potabile": "52",
     "acqua OR lago OR fiume": "294",
@@ -480,8 +480,8 @@
     "Grand Total": "59"
   },
   {
-    "lat": "44.166667",
-    "lon": "10.216667",
+    "lat": "",
+    "lon": "",
     "comune": "Comune di Minucciano",
     "acqua AND potabile": "39",
     "acqua OR lago OR fiume": "441",
@@ -660,8 +660,8 @@
     "Grand Total": "125"
   },
   {
-    "lat": "44.17031",
-    "lon": "10.34576",
+    "lat": "",
+    "lon": "",
     "comune": "Comune di San Romano in Garfagnana",
     "acqua AND potabile": "119",
     "acqua OR lago OR fiume": "461",
@@ -750,8 +750,8 @@
     "Grand Total": "221"
   },
   {
-    "lat": "44.19506",
-    "lon": "10.25506",
+    "lat": "",
+    "lon": "",
     "comune": "Comune di Sillano Giuncugnano",
     "acqua AND potabile": "4",
     "acqua OR lago OR fiume": "42",
@@ -810,8 +810,8 @@
     "Grand Total": "42"
   },
   {
-    "lat": "44.116667",
-    "lon": "10.283333",
+    "lat": "",
+    "lon": "",
     "comune": "Comune di Vagli Sotto",
     "acqua AND potabile": "2",
     "acqua OR lago OR fiume": "70",
@@ -870,8 +870,8 @@
     "Grand Total": "168"
   },
   {
-    "lat": "43.99748",
-    "lon": "10.42974",
+    "lat": "",
+    "lon": "",
     "comune": "Comune Fabbriche di Vergemoli",
     "acqua AND potabile": "9",
     "acqua OR lago OR fiume": "168",
