@@ -1,7 +1,7 @@
 [
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.1580565",
+    "lon": "10.3351514",
     "comune": "Comune Camporgiano",
     "acqua AND potabile": "84",
     "acqua OR lago OR fiume": "312",
@@ -60,8 +60,8 @@
     "Grand Total": "152"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.1696692",
+    "lon": "10.3470507",
     "comune": "Comune Castiglione di Garfagnana",
     "acqua AND potabile": "38",
     "acqua OR lago OR fiume": "139",
@@ -180,8 +180,8 @@
     "Grand Total": "66"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.119949",
+    "lon": "10.325396",
     "comune": "Comune di Careggine",
     "acqua AND potabile": "2",
     "acqua OR lago OR fiume": "21",
@@ -270,8 +270,8 @@
     "Grand Total": "0"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.110022",
+    "lon": "10.4117858",
     "comune": "Comune di Castelnuovo di Garfagnana",
     "acqua AND potabile": "4",
     "acqua OR lago OR fiume": "6",
@@ -420,8 +420,8 @@
     "Grand Total": "10"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.0606512",
+    "lon": "10.435668",
     "comune": "Comune di Gallicano",
     "acqua AND potabile": "52",
     "acqua OR lago OR fiume": "294",
@@ -480,8 +480,8 @@
     "Grand Total": "59"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.170449",
+    "lon": "10.207592",
     "comune": "Comune di Minucciano",
     "acqua AND potabile": "39",
     "acqua OR lago OR fiume": "441",
@@ -750,8 +750,8 @@
     "Grand Total": "221"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.2545057",
+    "lon": "10.3157169",
     "comune": "Comune di Sillano Giuncugnano",
     "acqua AND potabile": "4",
     "acqua OR lago OR fiume": "42",
@@ -810,8 +810,8 @@
     "Grand Total": "42"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.109248",
+    "lon": "10.288795",
     "comune": "Comune di Vagli Sotto",
     "acqua AND potabile": "2",
     "acqua OR lago OR fiume": "70",
@@ -900,8 +900,8 @@
     "Grand Total": "1197"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "43.9986",
+    "lon": "10.4289",
     "comune": "Comune Fosciandora",
     "acqua AND potabile": "61",
     "acqua OR lago OR fiume": "100",
@@ -930,8 +930,8 @@
     "Grand Total": "532"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.071749",
+    "lon": "10.417799",
     "comune": "Comune Molazzana",
     "acqua AND potabile": "0",
     "acqua OR lago OR fiume": "89",
@@ -960,8 +960,8 @@
     "Grand Total": "458"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.183484",
+    "lon": "10.3009238",
     "comune": "Comune Piazza al Serchio",
     "acqua AND potabile": "6",
     "acqua OR lago OR fiume": "132",
@@ -1050,8 +1050,8 @@
     "Grand Total": "30"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.1587592",
+    "lon": "10.3977419",
     "comune": "Comune Villa Collemandina",
     "acqua AND potabile": "84",
     "acqua OR lago OR fiume": "153",

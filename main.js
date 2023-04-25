@@ -127,7 +127,10 @@ const getRadius = (value, key) => {
 let width = window.innerWidth;
 let height = window.innerHeight;
 
-const projection = d3.geoMercator().center([12.6, 42.4]).scale(14000); //.center([13.5674, 42.8719]).scale(2200);
+const projection = d3
+    .geoMercator()
+    .center([10.6, 43.4]).scale(7000);
+    //.center([13.5674, 42.8719]).scale(2200); // ITALY
 const path = d3.geoPath(projection);
 const filters = d3.select("#filters");
 let markers = [];
