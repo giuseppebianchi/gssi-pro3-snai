@@ -330,8 +330,8 @@
     "Grand Total": "572"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "42.216667",
+    "lon": "13.766667",
     "comune": "Comune di Collepietro",
     "acqua AND potabile": "0",
     "acqua OR lago OR fiume": "5",
@@ -660,8 +660,8 @@
     "Grand Total": "125"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.166667",
+    "lon": "44.166667",
     "comune": "Comune di San Romano in Garfagnana",
     "acqua AND potabile": "119",
     "acqua OR lago OR fiume": "461",
@@ -870,8 +870,8 @@
     "Grand Total": "168"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "43.9986",
+    "lon": "10.4289",
     "comune": "Comune Fabbriche di Vergemoli",
     "acqua AND potabile": "9",
     "acqua OR lago OR fiume": "168",
@@ -990,8 +990,8 @@
     "Grand Total": "1619"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "44.132778",
+    "lon": "44.132778",
     "comune": "Comune Pieve Fosciana",
     "acqua AND potabile": "51",
     "acqua OR lago OR fiume": "69",
@@ -1020,8 +1020,8 @@
     "Grand Total": "724"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "42.185278",
+    "lon": "13.771667",
     "comune": "Comune San Benedetto In Perillis",
     "acqua AND potabile": "0",
     "acqua OR lago OR fiume": "0",
@@ -1080,8 +1080,8 @@
     "Grand Total": "1342"
   },
   {
-    "lat": "",
-    "lon": "",
+    "lat": "42.254444",
+    "lon": "13.575278",
     "comune": "Fagnano Alto",
     "acqua AND potabile": "3",
     "acqua OR lago OR fiume": "0",
