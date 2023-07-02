@@ -1,7 +1,7 @@
 import "./map.css";
 import * as d3 from "d3";
 
-const COMUNI_R = 5,
+const COMUNI_R = 3,
   MAX_R = 60,
   MIN_R = COMUNI_R - 1,
   MAX_FILTERS = 2;
@@ -124,13 +124,13 @@ const getRadius = (value, key) => {
     return 0;
   }
 };
-let width = window.innerWidth;
-let height = window.innerHeight;
+const width = window.innerWidth,
+  height = window.innerHeight,
+  MIN_SCALE = 0.3,
+  MAX_SCALE = 4;
 
-const projection = d3
-    .geoMercator()
-    .center([10.6, 43.4]).scale(7000);
-    //.center([13.5674, 42.8719]).scale(2200); // ITALY
+const projection = d3.geoMercator().center([10.6, 43.4]).scale(7000);
+//.center([13.5674, 42.8719]).scale(2200); // ITALY
 const path = d3.geoPath(projection);
 const filters = d3.select("#filters");
 let markers = [];
@@ -139,11 +139,27 @@ let comuni = [];
 let markersLayer, comuniLayer;
 
 // Create the SVG element for the map
+const zoom = d3
+  .zoom()
+  .on("zoom", function (e) {
+    svg.attr("transform", d3.event.transform);
+  })
+  .scaleExtent([MIN_SCALE, MAX_SCALE]);
+
+const dragger = d3
+    .drag()
+    .on("start", dragstarted)
+    .on("drag", dragged)
+    .on("end", dragended);
+
 const svg = d3
   .select("#container")
   .append("svg")
-  .attr("width", width)
-  .attr("height", height);
+  .attr("width", "100%")
+  .attr("height", "100%")
+  .call(zoom)
+  .call(dragger)
+  .append("g");
 
 const tooltip = d3.select("#tooltip");
 
@@ -312,4 +328,21 @@ function renderBubbles(hovered) {
     .duration(1000)
     .style("opacity", 0)
     .attr("r", 0);
+}
+function dragstarted(d) {
+  console.log(d);
+  //Tooltip.style("opacity", 0);
+  d.fx = d.x;
+  d.fy = d.y;
+}
+function dragged(d) {
+  console.log(svg);
+  //Tooltip.style("opacity", 0);
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+function dragended(d) {
+  console.log(d);
+  d.fx = null;
+  d.fy = null;
 }
