@@ -2,8 +2,8 @@ import "./map.css";
 import * as d3 from "d3";
 
 const COMUNI_R = 3,
-  MAX_R = 60,
-  MIN_R = COMUNI_R - 1,
+  MAX_R = 70,
+  MIN_R = COMUNI_R + 1,
   MAX_FILTERS = 2;
 let MAX_PROPERTY_VALUE, MIN_PROPERTY_VALUE;
 
@@ -124,6 +124,7 @@ const getRadius = (value, key) => {
     return 0;
   }
 };
+
 const width = window.innerWidth,
   height = window.innerHeight,
   MIN_SCALE = 0.3,
@@ -177,7 +178,7 @@ d3.json("data/italy_regions_rewind.geojson").then(function (regions) {
     .attr("d", path)
     .style("fill", "#ededed45")
     //.style("fill", "#c5c5c545")
-    .style("stroke", "#000")
+    .style("stroke", "#00000050")
     .style("stroke-width", "0.5px");
   // .on("mouseover", function () {
   //   d3.select(this).transition().duration("50").style("fill-opacity", 0.2);
