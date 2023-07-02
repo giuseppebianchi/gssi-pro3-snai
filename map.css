@@ -70,7 +70,7 @@ html {
   color: #0ea5e9;
 }
 #filters {
-  width: 300px;
+  width: 350px;
   background: #fff;
   position: absolute;
   left: 2rem;
@@ -91,6 +91,9 @@ html {
 #filters > .filters-title > h2 {
   color: #0ea5e9;
 }
+#filters > .filters-title > p {
+  color: #7dd3fc;
+}
 #filters > .filters-wrapper {
   overflow-y: auto;
   height: 100%;
@@ -107,7 +110,7 @@ html {
   transition: 0.5s;
 }
 #filters .filters-wrapper > .item-filter:hover {
-  background: #ededed;
+  background: #f1f5f9;
   opacity: 1;
 }
 #filters .filters-wrapper > .item-filter.active {
