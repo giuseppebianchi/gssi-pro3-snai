@@ -330,19 +330,14 @@ function renderBubbles(hovered) {
     .attr("r", 0);
 }
 function dragstarted(d) {
-  console.log(d);
-  //Tooltip.style("opacity", 0);
   d.fx = d.x;
   d.fy = d.y;
 }
 function dragged(d) {
-  console.log(svg);
-  //Tooltip.style("opacity", 0);
   d.fx = d3.event.x;
   d.fy = d3.event.y;
 }
 function dragended(d) {
-  console.log(d);
   d.fx = null;
   d.fy = null;
 }
