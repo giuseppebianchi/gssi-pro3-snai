@@ -58,23 +58,36 @@ html {
   fill: #3c373d;
 }
 #header {
+  display: flex;
+  align-items: center;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 2rem;
+  gap: 1rem;
   top: 1rem;
   background: #fff;
-  padding: 1rem 2rem;
+  padding: 1rem;
   font-size: 2rem;
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   color: #0ea5e9;
+}
+#header.center {
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+#header.left {
+  width: 350px;
+}
+#header img {
+  width: 5rem;
 }
 #filters {
   width: 350px;
   background: #fff;
   position: absolute;
   left: 2rem;
-  top: 7rem;
+  top: 9rem;
   bottom: 2rem;
   border-radius: 10px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
